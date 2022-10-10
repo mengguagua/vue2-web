@@ -151,7 +151,21 @@ export default {
         100017: '台湾居民来往大陆通行证',
         100018: '其他证件类型',
       },
-      tableData: [],
+      tableData: [
+        {companyName: 'AA'},
+        {companyName: 'BB'},
+        {companyName: 'BB'},
+        {companyName: 'BB'},
+        {companyName: 'BB'},
+        {companyName: 'BB'},
+        {companyName: 'BB'},
+        {companyName: 'BB'},
+        {companyName: 'CC'},
+        {companyName: 'DD'},
+        {companyName: 'EE'},
+        {companyName: 'BB'},
+        {companyName: 'BB'},
+      ],
       tableColumns: [
         {
           name: 'companyName',

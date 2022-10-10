@@ -92,6 +92,16 @@ export default {
 </script>
 
 <style lang="less">
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', sans-serif;
+  /*修改表格紧凑度*/
+  .el-table .el-table__cell {
+    padding: 6px 0;
+  }
+  .el-table th.el-table__cell>.cell {
+    padding: 2px 8px;
+  }
+}
 #app {
   width: 100%;
   height: 100%;
