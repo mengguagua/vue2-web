@@ -3,8 +3,7 @@
 section.head
   div.nav
     div.logo.fn-left
-      router-link(to="/")
-        span.title VUE2管理后台模板
+      span.title VUE2管理后台模板
 </template>
 
 <script>

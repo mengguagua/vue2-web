@@ -159,7 +159,7 @@ export default {
       .content {
         height: 100%;
         padding: 12px 20px;
-        width: calc(100vw - 350px - 0.5vw);
+        width: calc(100vw - 280px - 0.5vw);
         .el-scrollbar {
           height: 100%;
           .el-scrollbar__wrap {
