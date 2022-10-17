@@ -2,7 +2,7 @@
 <template lang="pug">
 section.head
   div.nav
-    div.logo.fn-left
+    div.logo
       span.title VUE2管理后台模板
 </template>
 
@@ -39,38 +39,6 @@ export default {
       padding: 24px 0 0 10px;
       .title {
         color: #fff;
-      }
-    }
-    .fn-right {
-      float: right;
-    }
-    .nav_item {
-      color: #fff;
-      padding-top: 24px;
-      padding-right: 15px;
-      font-size: 14px;
-      a {
-        color: #fff;
-      }
-      .text-underline {
-        text-decoration: underline;
-      }
-      .el-dropdown {
-        color: #fff;
-        cursor: pointer;
-      }
-      .head-img {
-        width: 35px;
-        height: 28px;
-        margin: 0 3px 0 20px;
-        /*background: #fff;*/
-        border-radius: 100%;
-        display: inline-block;
-        vertical-align: middle;
-        img {
-          max-width: 100%;
-          max-height: 100%;
-        }
       }
     }
   }
