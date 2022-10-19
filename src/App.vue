@@ -45,11 +45,10 @@ export default {
       leftMenuArray: [],
       tempLeftMenuArray: [
         {
-          menuName: '企业备案',
+          menuName: '一级菜单',
           menuUrl: '/registration',
           children: [
-            { menuName: '备案登记', menuUrl: '/registration/company' },
-            { menuName: '关联企业登记', menuUrl: '/registration/register' },
+            { menuName: '二级菜单', menuUrl: '/registration/register' },
           ]
         },
       ]

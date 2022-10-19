@@ -10,7 +10,6 @@
     easy-table(
       :tableLoading="loading"
       :columns="tableColumns"
-      :tableHeight="420"
       :headerStyle="{background: '#f4f4f4'}"
       :data="tableData"
       @load-more="loadMore"
@@ -100,8 +99,7 @@
 
 <script>
 import {
-  queryComReList, saveComRe, saveshInfo, updaeteshInfo, updateComRe, queryshInfoList,
-  deleteshInfo, deleteComRe, gtwCompanyInfo
+  aa, bb
 } from '@/service/interface';
 export default {
   data() {
@@ -169,23 +167,23 @@ export default {
       tableColumns: [
         {
           name: 'companyName',
-          title: '关联企业名称',
+          title: '字段1',
         },
         {
           name: 'etpsSccd',
-          title: '统一社会信用代码',
+          title: '字段1',
         },
         {
           name: 'linkMan',
-          title: '联系人',
+          title: '字段1',
         },
         {
           name: 'phone',
-          title: '电话号码',
+          title: '字段1',
         },
         {
           name: 'isSpecialBusiness',
-          title: '是否特殊区域企业',
+          title: '字段1',
           formatter(row, column, cellValue) {
             let specialBusiness = {
               1: '是',
@@ -196,15 +194,15 @@ export default {
         },
         {
           name: 'companyCode',
-          title: '海关十位代码',
+          title: '字段1',
         },
         {
           name: 'companyTypeName',
-          title: '企业类型',
+          title: '字段1',
         },
         {
           name: 'modifyTime',
-          title: '更新日期',
+          title: '字段1',
         },
       ],
     };
@@ -212,7 +210,7 @@ export default {
   methods: {
     searchCode() {
       if (this.dialogFormData.companyCode) {
-        gtwCompanyInfo(this.dialogFormData.companyCode).then((resp) => {
+        aa(this.dialogFormData.companyCode).then((resp) => {
           this.dialogFormData.registerAddress = resp.registerAddress;
           this.dialogFormData.companyName = resp.companyName;
           this.dialogFormData.companyCode = resp.companyCode;
@@ -228,7 +226,7 @@ export default {
       let data = {};
       data = {...this.formData};
       this.loading = true;
-      queryComReList(data).then((resp) => {
+      aa(data).then((resp) => {
         this.loading = false;
         this.tableData = resp.data;
       });
@@ -242,7 +240,7 @@ export default {
     },
     editHandler() {
       let data = {};
-      queryshInfoList(data).then((resp) => {
+      aa(data).then((resp) => {
         if (resp.data.length) {
           this.shareHolderRow = resp.data;
         } else {
@@ -250,16 +248,13 @@ export default {
         }
       });
       this.type = 'edit';
-      // `Object.assign(this.dialogFormData, this.selectedRow)` // 不能这样，响应式有问题，需如下
-      // this.dialogFormData = Object.assign({}, this.dialogFormData, this.selectedRow)
-      // this.dialogFormData = this.selectedRow; // 浅拷贝也不行
       this.dialogFormData = {...this.selectedRow};
       this.dialogVisible = true;
     },
     deleteHandler() {
       this.$confirm('确定删除当前行, 是否继续?', '提示', this.confirmItem).then(() => {
         let data = {...this.selectedRow};
-        deleteComRe(data).then(() => {
+        aa(data).then(() => {
           this.tipMessage('删除成功');
           this.search();
         });
@@ -270,12 +265,12 @@ export default {
         if (valid) {
           let data = {...this.dialogFormData};
           if (this.type === 'add') {
-            saveComRe(data).then(() => {
+            aa(data).then(() => {
               this.tipMessage('保存成功');
               this.search();
             });
           } else {
-            updateComRe(data).then(() => {
+            aa(data).then(() => {
               this.tipMessage('修改成功');
               this.search();
             });
@@ -294,7 +289,7 @@ export default {
       let data = {...item};
       if (item.id) {
         this.$confirm('确定删除, 是否继续?', '提示', this.confirmItem).then(() => {
-          deleteshInfo(data).then(() => {
+          aa(data).then(() => {
             this.shareHolderRow.splice(index, 1);
             this.tipMessage('删除成功');
           });
@@ -307,11 +302,11 @@ export default {
     saveShareHolderRow(item) {
       let data = {...item};
       if (item.id) {
-        updaeteshInfo(data).then(() => {
+        aa(data).then(() => {
           this.tipMessage('修改成功');
         });
       } else {
-        saveshInfo(data).then(() => {
+        aa(data).then(() => {
           this.tipMessage('保存成功');
         });
       }
@@ -328,9 +323,6 @@ export default {
     }
   },
   mounted() {
-    // this.search();
-    // this.getDictType(69);
-    // this.getDictType(77);
     // 表单校验
     this.rules = {
       etpsSccd: [

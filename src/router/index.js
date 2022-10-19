@@ -3,7 +3,6 @@ import Router from 'vue-router'
 const index = () => import('@/pages/index');
 const home = () => import('@/pages/home');
 
-const registrationCompany = () => import('@/pages/registration/company');
 const register = () => import('@/pages/registration/register');
 
 Vue.use(Router)
@@ -17,11 +16,10 @@ export default new Router({
     },
     {
       path: '/registration',
-      name: '备案登记',
+      name: '一级菜单',
       component: index,
       children: [
-        { path: 'company', name: '企业备案', component: registrationCompany },
-        { path: 'register', name: '关联企业登记', component: register },
+        { path: 'register', name: '二级菜单', component: register },
       ]
     },
   ]

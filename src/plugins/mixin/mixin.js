@@ -1,7 +1,4 @@
 // 封装一些公用方法，或着数据
-import {
-  dictionDataList,
-} from '@/service/interface';
 export default {
   data() {
     return {
@@ -45,6 +42,24 @@ export default {
     };
   },
   methods: {
+    getQueryStringArgs() {
+      let queryData = '';
+      if (location.search) {
+        queryData = location.search;
+      } else if (location.hash) {
+        queryData = '?' + location.hash.split('?')[1];
+      }
+      let qs = (queryData.length > 0 ? queryData.substring(1) : '');
+      let args = [];
+      for (let item of qs.split('&').map( kv => kv.split('=') )) {
+        let name = decodeURIComponent(item[0]);
+        let value = decodeURIComponent(item[1]);
+        if (name) {
+          args[name] = value;
+        }
+      }
+      return args;
+    },
     tipMessage(msg = '操作成功', type = 'success') {
       this.$message({
         type: type,
@@ -151,25 +166,6 @@ export default {
     // 对象属性设置为空 （在新建弹窗，对象置空时用到）
     objectAttributeReset(obj) {
       Object.keys(obj).forEach(key => { obj[key] = ''; });
-    },
-    // 数据字典下拉数据 69关区 77企业类型
-    getDictType(type) {
-      let optionData = [];
-      dictionDataList(type).then((resp) => {
-        if (resp) {
-          resp.forEach((item) => {
-            optionData.push({
-              label: item.paramName,
-              value: item.paramValue,
-            });
-          });
-        }
-        if (type === 69) {
-          this.entryAndExitOptions = optionData;
-        } else if (type === 77) {
-          this.companyTypeOptions = optionData;
-        }
-      });
     },
   }
 };
