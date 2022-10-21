@@ -32,6 +32,7 @@ export default {
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+//@import url('https://fonts.googleapis.com/css?family=Arima');
 :root {
   --blue: #0e0620;
   --white: #fff;
@@ -42,6 +43,7 @@ export default {
   align-items: center;
   justify-content: center;
   font-family:"Nunito Sans";
+  //font-family:"Arima";
   color: var(--blue);
   font-size: 1em;
   background: #fff;
@@ -96,7 +98,7 @@ h2 {
   }
 }
 .row {
-  margin-top: 10vh;
+  margin-top: 4vh;
   display: flex;
 }
 .lost-page {

@@ -6,3 +6,11 @@
 - sass依赖下载 npm install node-sass@npm:dart-sass 下载dart-sass代替node-sass，再下载sass-loader@7.1.0 和 sass
 ### 注意事项
 - 图片引用，使用～@开头，@对应src目录。  例如：~@/assets/images/top1.png
+
+### 可用字体
+   示例见404页面
+   - Roboto
+   - Open Sans
+   - Poppins
+   - Source Sans Pro
+   - Ubuntu

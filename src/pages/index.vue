@@ -129,7 +129,8 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
 *,
 *:after,
 *:before {
@@ -229,7 +230,7 @@ export default {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', sans-serif;
+  font-family: 'PingFang SC', 'Nunito Sans', BlinkMacSystemFont, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', sans-serif;
   /*修改表格紧凑度*/
   .el-table .el-table__cell {
     padding: 8px 0;
