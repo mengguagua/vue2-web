@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 const index = () => import('@/pages/index');
 const home = () => import('@/pages/home');
+const lostPage = () => import('@/pages/404');
 
 const register = () => import('@/pages/registration/register');
 
@@ -12,7 +13,15 @@ export default new Router({
     {
       path: '/',
       name: '',
-      component: home,
+      component: index,
+      children: [
+        { path: '/', name: 'home', component: home },
+      ]
+    },
+    {
+      path: '/404',
+      name: '',
+      component: lostPage,
     },
     {
       path: '/registration',
