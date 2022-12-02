@@ -94,7 +94,7 @@
             el-divider(v-if="shareHolderRow.length-1 !== index")
         div.footer(slot="footer")
           el-button(@click="cancel" size="small") 关 闭
-          el-button(type="primary" @click="save" size="small") 确 定
+          el-button(type="primary" @click="throttleSave" size="small") 确 定
 </template>
 
 <script>
@@ -323,6 +323,7 @@ export default {
     }
   },
   mounted() {
+    this.throttleSave = this.throttle(this.save);
     // 表单校验
     this.rules = {
       etpsSccd: [

@@ -167,5 +167,28 @@ export default {
     objectAttributeReset(obj) {
       Object.keys(obj).forEach(key => { obj[key] = ''; });
     },
+    // 节流函数,默认函数调用延迟0.5s
+    throttle(fn, interval) {
+      let __self = fn; // 需要被延迟执行的函数引用
+      let timer = null; // 定时器
+      let firstTime = true; // 第一次调用标记
+      return function () {
+        let args = arguments; // 被延迟执行的函数的变量
+        let __me = this; // 被延迟执行的函数的this
+        if ( firstTime ) { // 第一次不用延时
+          __self.apply(__me, args); // 执行被延迟执行的函数
+          firstTime = false;
+          return false;
+        }
+        if ( timer ) { // 定时器还在证明在延时期间，不调用原函数
+          return false;
+        }
+        timer = setTimeout( () => {
+          clearTimeout(timer); // 清空本次定时器对象
+          timer = null;
+          __self.apply(__me, args);
+        }, interval || 500); // 默认延迟0.5s
+      };
+    },
   }
 };

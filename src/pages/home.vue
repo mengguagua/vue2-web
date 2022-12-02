@@ -5,7 +5,23 @@
 
 <script>
 export default {
-  name: 'home'
+  name: 'home',
+  data() {
+    return {
+      aaaa: 'aaa',
+    }
+  },
+  methods: {
+    getKey() {
+      return 'aaaa';
+    }
+  },
+  mounted() {
+    let b111222 = 'ok112'
+    let b111333 = 'ok1122'
+    console.log(b111222);
+    // console.log('test', b111222);
+  }
 };
 </script>
 
