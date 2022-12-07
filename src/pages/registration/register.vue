@@ -1,10 +1,19 @@
 <!--关联企业登记-->
 <template lang="pug">
   div.top-content
-    table-search(@submit="search")
+    //- table-search(@submit="search")
+    search-group(lableWidth="100" :need-reset="true" @submit="search" @reset="reset")
       div(slot="condition")
         el-form-item(label="企业名称")
           el-input(v-model="formData.companyName" size="small" placeholder="请输入" clearable)
+        el-form-item(label="组织机构代码")
+          el-input(v-model="formData.orgCode" size="small" placeholder="请输入" clearable)
+        el-form-item(label="组织机构代码")
+          el-input(v-model="formData.orgCode" size="small" placeholder="请输入" clearable)
+        el-form-item(label="组织机构代码")
+          el-input(v-model="formData.orgCode" size="small" placeholder="请输入" clearable)
+        el-form-item(label="组织机构代码")
+          el-input(v-model="formData.orgCode" size="small" placeholder="请输入" clearable)
         el-form-item(label="组织机构代码")
           el-input(v-model="formData.orgCode" size="small" placeholder="请输入" clearable)
     easy-table(
@@ -232,6 +241,7 @@ export default {
       });
     },
     loadMore() {},
+    reset() {},
     addHandler() {
       this.type = 'add';
       this.shareHolderRow = [{}];
