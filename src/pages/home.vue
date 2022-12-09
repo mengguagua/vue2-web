@@ -21,6 +21,8 @@ export default {
     let b111333 = 'ok1122'
     console.log(b111222);
     // console.log('test', b111222);
+    let date = this.formatDate(new Date(), 'MM-dd');
+    console.log(date);
   }
 };
 </script>
