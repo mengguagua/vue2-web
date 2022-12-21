@@ -229,11 +229,41 @@ export default {
       // 在内存中移除URL 对象
       window.URL.revokeObjectURL(herf)
     },
-    // 函数组合的通用方法
+
+    // 函数组合的通用方法，示例如下
+    // let toUpperCase = function(x) { return x.toUpperCase(); };
+    // let exclaim = function(x) { return x + '!'; };
+    // let shout = compose(exclaim, toUpperCase);
+    // shout("send in the clowns");
+    //=> "SEND IN THE CLOWNS!"
     compose(f,g) {
       return function(x) {
         return f(g(x));
       };
     },
+
+    // 装饰器给函数添加新功能， 使用示例如下
+    // let a = function(){
+    //   console.log('原函数功能')
+    // }
+    // a = functionBefore(a,() => {
+    //   console.log('before-新函数功能')
+    // })
+    // a(); // 打印：before-新函数功能 原函数功能
+    functionBefore(originalFn, beforeFn ){
+      let __self = originalFn; // 保存原函数的this
+      return function(){ // 返回一个函数，内容包括新功能和原函数功能
+        beforeFn.apply( originalFn, arguments ); // 执行新函数，保证this不给劫持
+        return __self.apply( originalFn, arguments ); // 执行原函数，并返回原函数的执行结果
+      }
+    },
+    functionAfter(originalFn, afterFn){ // 同理只是把新函数功能的执行顺序放在原函数后面
+      let __self = originalFn;
+      return function(){
+        let ret = __self.apply( originalFn, arguments );
+        afterFn.apply( originalFn, arguments );
+        return ret;
+      }
+    }
   }
 };
