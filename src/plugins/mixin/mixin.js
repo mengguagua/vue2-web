@@ -207,7 +207,6 @@ export default {
         if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
       return fmt;
     },
-
     // 下载流通用处理方式，如果是word则设置为msword，excel为excel
     download(res, type = 'application/pdf;chartset=UTF-8', filename) {
       // 创建blob对象，解析流数据
@@ -229,6 +228,12 @@ export default {
       document.body.removeChild(a)
       // 在内存中移除URL 对象
       window.URL.revokeObjectURL(herf)
+    },
+    // 函数组合的通用方法
+    compose(f,g) {
+      return function(x) {
+        return f(g(x));
+      };
     },
   }
 };
