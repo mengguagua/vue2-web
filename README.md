@@ -15,10 +15,6 @@
    - Source Sans Pro
    - Ubuntu
 
-# 前端指南v1.1
-
-[TOC]
-
 ## 前端工作流程简述
 
 ![前端项目流程.png](https://s2.loli.net/2022/04/07/7GzjHekTCgJIAhv.png)
@@ -132,6 +128,39 @@ pattern.test('123ABCabc') // 返回true
 
 ```
 "analyz": "NODE_ENV=production npm_config_report=true npm run build"
+```
+
+### 文件上传通用写法
+```
+// ---- html
+el-upload(ref="imageUpload", :limit="1" action="" :http-request="selectFile" style="display: inline")
+  el-button(size="mini" type="primary") 点击上传
+  div.el-upload__tip(slot="tip") 支持上传JPG 、PNG图片，大小不超过2M
+// ---- js
+selectFile(e) {
+  // 图片不大于2M
+  if (e && e.file.size > 2000000) {
+    this.$message({
+      type: 'warning',
+      message: '大小不能超过2M'
+    });
+    this.$refs.imageUpload.clearFiles();
+  } else {
+    const file = e.file;
+    this.attach.push(file);
+    this.$message({
+      type: 'success',
+      message: '选择文件成功!'
+    });
+  }
+},
+// 提交方法内部，文件相关代码
+if (!this.attach.length) {
+this.tipMessage('文件不能为空', 'warning');
+    return false;
+}
+let formData = new FormData();
+formData.append('file', this.attach[0]);
 ```
 
 ## 样式规范
